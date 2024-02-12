@@ -7,6 +7,29 @@ UTC_TIME_DIFFERENCE = datetime.timedelta(hours = 8)
 
 class DateTimeManager:
     ###########################################################################
+    ##Method to get the unique month list 
+    def get_unique_month_list (window):
+
+        time_list = DateTimeManager.get_years_months_days(window.start, window.end)
+
+        tracker_str = []
+        ret_list = []
+        
+        for element in time_list:
+            curr_year = str(element.year)
+            curr_month = str(element.month)
+            if len(curr_month) == 1:
+                curr_month = '0' + curr_month 
+            curr_day = '01' 
+            curr_date_str = curr_year + '/' + curr_month + '/' + curr_day
+            
+            if curr_date_str not in tracker_str:
+                tracker_str.append(curr_date_str)
+                ret_list.append(DateTimeManager.string_to_object(curr_date_str))
+
+        return ret_list
+    
+    ###########################################################################
     ##Method to find the nth defined day of the given period 
     def get_nth_defined_day (window, interval, day_string: str, occurence: int):
         day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
@@ -37,7 +60,7 @@ class DateTimeManager:
 
         ret_list = []
         curr_time = from_time
-        fuse = 1000
+        fuse = 100000
 
         while curr_time < to_time:
             if with_date == False:

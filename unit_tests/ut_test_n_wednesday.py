@@ -5,12 +5,12 @@ import sys
 sys.path.append(root_dir)
 data_dir = root_dir + 'unit_tests//input_data//'
 save_dir = root_dir + 'unit_tests//output_data//'
+import json 
 
 from ancillaries.data_structures.window import Window
 from ancillaries.data_structures.generic_value import GenericValue
 from ancillaries.date_time_manager import DateTimeManager
 from deployment.d_live_pull import DLivePull
-
 
 def ut_test_n_wednesday ():
 
@@ -24,11 +24,14 @@ def ut_test_n_wednesday ():
     
     x = DateTimeManager.get_nth_defined_day(window, interval, 'wednesday', 1)
 
-    live_pull_obj = DLivePull()
-    x = live_pull_obj.execute(x.split(', ')[0])
+    ##2. Getting teh database credentials 
+    local_postgres_connection_details_dir = root_dir + 'data_manager//default_configurations//postgres_connection_details_template_1.json'
+    with open (local_postgres_connection_details_dir, 'r') as read_file:
+        postgres_connection_details = json.load(read_file)    
 
-    print(x)
-
+    ##Executing the live pull
+    live_pull_obj = DLivePull(postgres_connection_details)
+    x = live_pull_obj.execute_pull(x.split(', ')[0])
 
     return test_name, result
 

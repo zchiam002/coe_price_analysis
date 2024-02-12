@@ -1,0 +1,46 @@
+{
+    "description": "coe_premium",
+    "table_descriptions": [
+        {
+            "name": "coe_premium",
+            "column_details": {
+                "names": [
+                    "uuid",
+                    "incoming_timestamp",
+                    "date_utc",
+                    "category",
+                    "description",
+                    "quota_premium",
+                    "delta",
+                    "pqp",
+                    "quota",
+                    "bids_received"
+                ],
+                "data_types": [
+                    "TEXT",
+                    "TIMESTAMPTZ",
+                    "TIMESTAMPTZ",
+                    "TEXT",
+                    "TEXT", 
+                    "NUMERIC",
+                    "NUMERIC",
+                    "TEXT", 
+                    "NUMERIC", 
+                    "NUMERIC"
+                ],
+                "is_primary_key": [
+                    true,
+                    false,
+                    false,
+                    false, 
+                    false, 
+                    false, 
+                    false, 
+                    false, 
+                    false, 
+                    false
+                ]
+            }
+        }
+    ]
+}

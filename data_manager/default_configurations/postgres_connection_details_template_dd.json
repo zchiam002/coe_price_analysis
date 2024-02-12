@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "dbname": "coe_analysis",
+    "user": "postgres",
+    "password": "12345",
+    "port": 5432
+}

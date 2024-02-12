@@ -1,0 +1,7 @@
+{
+    "host": "routeapi-db.cdtpotqvzmid.ap-southeast-1.rds.amazonaws.com",
+    "dbname": "coe_analysis",
+    "user": "postgres",
+    "password": "x1Ua9rn17ZQ2FgpENLi0",
+    "port": 5432
+}

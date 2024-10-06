@@ -27,10 +27,13 @@ class DLivePull:
     ##Method to execute live pull
     def execute (self, time_difference = GenericValue({'value': 8, 'unit': 'hr'})):
         
-        while True:
+        x = True
+        while x == True:
             curr_time = datetime.datetime.utcnow()
             curr_time_str = DateTimeManager.object_to_string(curr_time).replace(', ', 'T') + 'Z'
             curr_time = DateTimeManager.string_to_object(curr_time_str)
+
+            print('Attempting pull for ', curr_time)
 
             curr_time_year = curr_time.year 
             curr_time_month = curr_time.month
